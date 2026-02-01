@@ -108,14 +108,16 @@ curl http://localhost:8000/api/markets?limit=5
 ## 截图
 
 ### 仪表盘主界面
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/Dashboard.png)
 
 ### 巨鲸监控
-![Whale Trades](screenshots/whale-trades.png)
+![Whale Trades](screenshots/Traders.png)
 
-### AI 交易者画像
-![AI Profile](screenshots/ai-profile.png)
+### 市场数据
+![AI Profile](screenshots/Alpha.png)
 
+###跟单数据
+![Following](screenshots/Copy.png)
 ## 演示数据
 
 ### 示例市场
