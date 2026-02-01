@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cyberpunk Terminal Theme */
+    --background: 222 47% 7%;
+    --foreground: 0 0% 95%;
+    --card: 220 40% 9%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 40% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 189 100% 50%;
+    --primary-foreground: 222 47% 7%;
+    --secondary: 156 100% 50%;
+    --secondary-foreground: 222 47% 7%;
+    --muted: 220 30% 15%;
+    --muted-foreground: 220 15% 50%;
+    --accent: 156 100% 50%;
+    --accent-foreground: 222 47% 7%;
+    --destructive: 340 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 18%;
+    --input: 220 30% 18%;
+    --ring: 189 100% 50%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyber-black text-foreground antialiased;
+    font-family: "Microsoft YaHei", "微软雅黑", -apple-system, sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0B0F19;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00D4FF40, #00FF9D40);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00D4FF, #00FF9D);
+  }
+}
+
+@layer components {
+  /* Cyber Card - 核心卡片样式 */
+  .cyber-card {
+    @apply relative overflow-hidden rounded-xl;
+    background: rgba(22, 27, 40, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .cyber-card:hover {
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+  }
+
+  /* Cyber Card with grid pattern */
+  .cyber-card-grid {
+    @apply cyber-card;
+    background:
+      linear-gradient(to right, rgba(31, 41, 55, 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(31, 41, 55, 0.3) 1px, transparent 1px),
+      rgba(22, 27, 40, 0.8);
+    background-size: 20px 20px, 20px 20px, 100% 100%;
+  }
+
+  /* Cyber Button */
+  .cyber-btn {
+    @apply relative px-6 py-3 font-mono font-bold uppercase tracking-widest;
+    @apply bg-neon-cyan text-cyber-black;
+    @apply hover:bg-neon-green;
+    @apply transition-all duration-300;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .cyber-btn:hover {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  }
+
+  /* Cyber Tag */
+  .cyber-tag {
+    @apply px-2 py-1 text-xs font-mono rounded;
+    @apply border bg-opacity-10;
+  }
+
+  .cyber-tag-cyan {
+    @apply cyber-tag text-neon-cyan border-neon-cyan/30 bg-neon-cyan/10;
+  }
+
+  .cyber-tag-green {
+    @apply cyber-tag text-neon-green border-neon-green/30 bg-neon-green/10;
+  }
+
+  .cyber-tag-red {
+    @apply cyber-tag text-neon-red border-neon-red/30 bg-neon-red/10;
+  }
+
+  /* Active Nav Item */
+  .nav-active {
+    @apply relative bg-neon-cyan/10 border-l-4 border-neon-cyan text-neon-cyan;
+    box-shadow: inset 5px 0 20px -5px rgba(0, 212, 255, 0.3);
+  }
+}
+
+@layer utilities {
+  /* Marquee Animation */
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* Neon Glow Effects */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4),
+                0 0 40px rgba(0, 212, 255, 0.2);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.4),
+                0 0 40px rgba(0, 255, 157, 0.2);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4),
+                0 0 40px rgba(255, 0, 85, 0.2);
+  }
+
+  /* Text Glow */
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8),
+                 0 0 20px rgba(0, 212, 255, 0.4);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.8),
+                 0 0 20px rgba(0, 255, 157, 0.4);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #00D4FF 0%, #00FF9D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-pink {
+    background: linear-gradient(135deg, #FF00E5 0%, #00D4FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Scanline Effect */
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Scan Animation */
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00D4FF, transparent);
+    animation: scan 2s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { top: 0; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* Decrypt Animation */
+  .decrypt-text {
+    animation: decrypt 0.5s ease-out forwards;
+  }
+
+  @keyframes decrypt {
+    0% { opacity: 0; filter: blur(10px); transform: translateY(-5px); }
+    100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+  }
+
+  /* CIA Typing Effect */
+  .cia-typing::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Shredder Loading */
+  .shredder-loading {
+    animation: shredder 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shredder {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(15px) rotate(3deg); opacity: 0.5; }
+    100% { transform: translateY(30px) rotate(-3deg); opacity: 0; }
+  }
+
+  /* Whale Bounce */
+  .whale-bounce {
+    animation: whale-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes whale-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  /* Alert Flash */
+  .alert-flash {
+    animation: alert-flash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes alert-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Pulse Dot */
+  .pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-smooth-fast {
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Font */
+  .font-pixel {
+    font-family: var(--font-pixel), monospace;
+  }
+}
