@@ -71,8 +71,6 @@ cd nancy-alpha
 #### 2. 后端设置
 
 ```bash
-cd backend
-
 # 创建虚拟环境
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
@@ -97,7 +95,7 @@ python -m src.main serve
 #### 3. 前端设置
 
 ```bash
-cd frontend
+cd src/frontend
 
 # 安装依赖
 npm install
@@ -113,14 +111,14 @@ npm run dev
 ### 运行命令
 
 ```bash
-# 后端
+# 后端 (在根目录)
 python -m src.main serve              # 启动 API 服务 (端口 8000)
 python -m src.main sync-markets       # 同步市场数据
 python -m src.main listen             # 启动链上监听
 python -m src.main fast-backfill 5000 # 快速回填交易数据
 python -m src.main ai-profile 50      # 批量 AI 画像分析
 
-# 前端
+# 前端 (在 src/frontend 目录)
 npm run dev      # 开发模式 (端口 3000)
 npm run build    # 生产构建
 ```
@@ -166,22 +164,31 @@ npm run build    # 生产构建
 
 ```
 nancy-alpha/
-├── README.md              # 项目说明
-├── DEMO.md                # 演示说明
-├── frontend/              # Next.js 前端
-│   ├── app/               # 页面路由
-│   ├── components/        # React 组件
-│   ├── lib/               # API 客户端
-│   └── package.json
-├── backend/               # FastAPI 后端
-│   ├── src/
-│   │   ├── api/           # REST API
-│   │   ├── indexer/       # 链上监听
-│   │   ├── profiler/      # AI 画像
-│   │   └── agent/         # 内幕分析
-│   └── requirements.txt
-├── docs/                  # 文档
-└── screenshots/           # 截图
+├── README.md              # 项目说明文档
+├── DEMO.md                # 演示说明和截图
+├── src/                   # 源代码目录
+│   ├── api/               # REST API 路由
+│   ├── indexer/           # 链上监听模块
+│   │   ├── listener.py    # 交易监听器
+│   │   ├── discovery.py   # 市场发现
+│   │   └── decoder.py     # 事件解码
+│   ├── profiler/          # 画像分析模块
+│   │   ├── analyzer.py    # 基础画像
+│   │   └── ai_analyzer.py # AI 画像
+│   ├── agent/             # 内幕分析模块
+│   ├── frontend/          # Next.js 前端
+│   │   ├── app/           # 页面路由
+│   │   ├── components/    # React 组件
+│   │   ├── lib/           # API 客户端
+│   │   └── package.json   # 前端依赖
+│   ├── models.py          # 数据模型
+│   ├── db.py              # 数据库连接
+│   └── main.py            # 入口文件
+├── requirements.txt       # Python 依赖
+├── .env.example           # 环境变量示例
+├── docker-compose.yml     # Docker 配置
+├── data/                  # 示例数据
+└── screenshots/           # 运行截图
 ```
 
 ## 团队成员

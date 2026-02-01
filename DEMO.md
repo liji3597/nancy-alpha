@@ -5,7 +5,7 @@
 ### 1. 启动后端服务
 
 ```bash
-cd backend
+cd nancy-alpha
 
 # 激活虚拟环境
 source venv/bin/activate  # Windows: venv\Scripts\activate
@@ -23,7 +23,7 @@ python -m src.main serve
 ### 2. 启动前端服务
 
 ```bash
-cd frontend
+cd src/frontend
 
 # 安装依赖
 npm install
@@ -49,19 +49,16 @@ npm run dev
 - 市场情绪雷达
 
 #### 4.2 巨鲸交易监控
-API 调用：
 ```bash
 curl http://localhost:8000/api/whales/live?limit=10
 ```
 
 #### 4.3 AI 交易者画像
-API 调用：
 ```bash
 curl -X POST "http://localhost:8000/api/traders/0x63ce342161250d705dc0b16df89036c8e5f9ba9a/ai-analyze"
 ```
 
 #### 4.4 市场数据
-API 调用：
 ```bash
 curl http://localhost:8000/api/markets?limit=5
 ```
@@ -69,10 +66,10 @@ curl http://localhost:8000/api/markets?limit=5
 ## 预期输出
 
 ### 仪表盘页面
-- 显示赛博朋克风格的深色主题界面
+- 赛博朋克风格深色主题界面
 - 顶部滚动条实时显示巨鲸交易警报
 - 左侧显示热门政治预测市场
-- 右侧显示聪明钱排行榜，每个钱包附带 AI 分析评语
+- 右侧显示聪明钱排行榜，附带 AI 分析评语（限30字）
 - 底部显示市场情绪趋势图
 
 ### API 响应示例
@@ -104,7 +101,7 @@ curl http://localhost:8000/api/markets?limit=5
   "label": "小额试探性交易者",
   "trading_style": "保守",
   "risk_preference": "低",
-  "ai_analysis": "该交易者交易频次较高但单笔金额较小，呈现试探性交易特征..."
+  "ai_analysis": "该交易者交易频次较高但单笔金额较小..."
 }
 ```
 
@@ -134,18 +131,17 @@ curl http://localhost:8000/api/markets?limit=5
 - Address: `0x63ce342161250d705dc0b16df89036c8e5f9ba9a`
 - Type: `dumb_money`
 - Label: `小额试探性交易者`
-- Total Trades: 25
 
 ## 链上数据验证
 
-可在 Polygonscan 验证交易：
+Polygonscan 验证交易：
 ```
 https://polygonscan.com/tx/0x111d69f801f26c4fff500c08f3aa2ed27ecccbc9250606d7d51b753202850bbd
 ```
 
 ## 注意事项
 
-1. 首次运行需要同步市场数据 (`sync-markets`)
+1. 首次运行需要同步市场数据 (`python -m src.main sync-markets`)
 2. AI 分析需要有效的 Anthropic API Key
 3. 链上监听需要稳定的 Polygon RPC 连接
-4. 前端默认连接 `http://localhost:8000`，可通过 `.env.local` 修改
+4. 前端默认连接 `http://localhost:8000`
