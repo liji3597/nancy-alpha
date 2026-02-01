@@ -4,8 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { LineChart, Line, ResponsiveContainer } from 'recharts'
 import { cn, formatNumber, formatDate } from '@/lib/utils'
-import { mockMarkets } from '@/lib/mock-data'
-import { TrendingUp, Filter, BarChart3 } from 'lucide-react'
+import { useMarkets } from '@/lib/api/hooks'
+import { getMarketsWithFallback } from '@/lib/api/adapter'
+import { TrendingUp, Filter, BarChart3, Loader2 } from 'lucide-react'
 
 function MarketCard({ market }: { market: any }) {
   return (
@@ -60,9 +61,13 @@ export default function MarketsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('全部')
   const [sortBy, setSortBy] = useState<'volume' | 'price_change' | 'liquidity'>('volume')
 
+  // 使用 API hook 获取真实数据，失败时回退到 mock 数据
+  const { data: apiData, isLoading, error } = useMarkets({ limit: 100, active_only: true })
+  const markets = getMarketsWithFallback(apiData?.data)
+
   const categories = ['全部', '国际政治', '地缘政治']
 
-  const filteredMarkets = mockMarkets
+  const filteredMarkets = markets
     .filter((m) => selectedCategory === '全部' || m.subcategory === selectedCategory)
     .sort((a, b) => {
       switch (sortBy) {
