@@ -34,7 +34,7 @@ Nancy's Alpha 是一个实时监控 Polymarket 政治预测市场的 Web3 应用
 │                              │     External Services        │   │
 │                              │  • Polygon RPC (链上数据)     │   │
 │                              │  • Gamma API (市场元数据)     │   │
-│                              │  • Claude API (AI分析)       │   │
+│                              │  • DeepSeek API (AI分析)       │   │
 │                              └──────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -46,7 +46,7 @@ Nancy's Alpha 是一个实时监控 Polymarket 政治预测市场的 Web3 应用
 | Frontend | Next.js 14, Tailwind CSS, RainbowKit, Recharts |
 | Backend | FastAPI, SQLAlchemy (Async), Web3.py |
 | Database | PostgreSQL |
-| AI | Anthropic Claude API |
+| AI | DeepSeek API |
 | Blockchain | Polygon RPC, Polymarket CTF Exchange |
 
 ## 快速开始
@@ -57,7 +57,7 @@ Nancy's Alpha 是一个实时监控 Polymarket 政治预测市场的 Web3 应用
 - Node.js 18+
 - PostgreSQL 14+
 - 有效的 Polygon RPC URL
-- Anthropic API Key (用于 AI 分析)
+- DeepSeek API Key (用于 AI 分析)
 
 ### 安装步骤
 
