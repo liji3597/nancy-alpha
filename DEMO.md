@@ -114,7 +114,7 @@ curl http://localhost:8000/api/markets?limit=5
 ![Whale Trades](screenshots/Traders.png)
 
 ### 市场数据
-![AI Profile](screenshots/Alpha.png)
+![Market](screenshots/Alpha.png)
 
 ###跟单数据
 ![Following](screenshots/Copy.png)
